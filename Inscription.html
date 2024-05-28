@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+    <script src="fo.js"></script>
+</head>
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(images/Salle\ de\ cinéma.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.wrapper{
+    width: 420px;
+    background: transparent;
+    border:2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+.wrapper h1{
+    font-size: 36px;
+    text-align: center;
+}
+.wrapper .input-box{
+    text-align: center;
+    width: 100%;
+    height: 60px;
+    position: relative;
+    margin-top: 20px;
+}
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 20px 40px 20px 20px;
+}
+.input-box input::placeholder{
+    color: #fff;
+
+}
+.wrapper .remember-forgot{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    margin: 15px 5px 15px;
+}
+.remember-forgot label input{
+accent-color: #fff;
+margin-right: 3px;
+}
+.remember-forgot a {
+    color: #fff;
+    text-decoration: none;
+}
+.remember-forgot a:hover{
+    text-decoration: none;
+    color: black;
+}
+.wrapper .btn{
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    color: #333;
+    font-weight: 700;
+}
+.wrapper .register-link{
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+
+}
+.register-link p a{
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+.register-link p a:hover{
+    text-decoration: none;
+    color: rgb(129, 83, 83);
+}
+h4{
+    margin-bottom: 5px;
+}
+.error-message {
+      color: red;
+      font-size: 10px;
+      margin-top: 0.2em;
+}
+</style>
+<body>
+    <div class="wrapper">
+        <form action="#" method="post" enctype="multipart/form-data">
+            <div class="affichage"></div>
+            <h1>Inscription </h1>
+            <div class="input-box">
+                <h4>Nom:</h4>
+                <input type="text" name="nom" placeholder="Entrer Votre Nom" required>
+            </div><br>
+            <div class="input-box">
+            <h4>Prénom:</h4>
+            <input type="text" name="prenom" placeholder="Entrer Votre Prénom" required>
+        </div><br>
+            <div class="input-box">
+                <h4>Email:</h4>
+                <input type="email" name="mail" placeholder="ex:client@gmail.com" required>
+            </div><br>
+            <div class="input-box">
+                <h4>Numéro de Téléphone:</h4>
+                <input type="tel" name="tel" placeholder="+229 00000000" required>
+            </div><br>
+            <div class="input-box">
+                <h4>Date de naissance:</h4>
+                <input type="date" name="nai" placeholder="" required>
+            </div><br>
+            <div class="input-box">
+                <h4>Mot de passe:</h4>
+                <input type="password" id="password" name="password"  placeholder="Veuillez entrer Un bon mot de passe" required>
+                <div id="password-error" class="error-message"></div>
+            </div><br>
+            <div class="input-box">
+                <h4>Photo de Profil:</h4>
+                <input type="file" id="img" name="img"  placeholder="" required>
+                <div id="password-error" class="error-message"></div>
+            </div><br>
+
+            <div class="remember-forgot">
+                <label>
+                    <input type="checkbox">Se souvenir de moi
+                </label>
+            
+            </div>
+            <button type="submit" class="btn" onclick="validatePassword()">S'inscrire</button>
+
+            <div class="register-link">
+                <p>Avez vous déja un compte?<a href="Formulaire.html"> Se Connecter</a></p>
+            </div>
+        </form>
+    </div>
+  
+ 
+    
+      
+</body>
+<script>
+    const button = document.querySelector("button");
+let affichage = document.querySelector('.affichage');
+ let   form =document.querySelector("form");
+    button.addEventListener("click",()=>{
+          let xhr = new XMLHttpRequest();
+       xhr.open("POST","input.php",true);
+       xhr.onload = ()=>{
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                let data = xhr.responseText;
+                affichage.innerText = data;
+                if (data === "ok") {
+                    location.href = 'index.php';
+                }
+            }
+        }
+    }
+    let element = new FormData(form);
+    xhr.send(element);
+
+    })
+</script>
+
+</html>

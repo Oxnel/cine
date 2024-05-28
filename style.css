@@ -1,0 +1,59 @@
+/* Styles personnalisés */
+
+nav{
+  background: #0c0c2d;
+}
+.ela{
+  display: flex;
+  justify-content: center;
+}
+  .bg-custom-blue {
+    background-color: #0c0c2d; /* Code hexadécimal pour le bleu nuit */
+    text-align: end;
+  }
+  .bxs-user-circle {
+    font-size: 50px; /* la taille souhaitée=50px */
+    color: antiquewhite;
+    
+  } 
+  .collapse.navbar-collapse {
+    text-align: left;
+  }
+  .navb0ar-nav {
+    text-align: left;
+  }
+  img{
+    width:50px;
+    height:50px;
+    border-radius: 50%;
+  }
+  ul{
+    display: flex;
+    justify-content: flex-start;
+  }
+body {
+    padding-top: 56px; /* Ajouter un espace pour la navbar fixe */
+  }
+  
+  .carousel-item {
+    height: 400px; /* Hauteur du carrousel */
+  }
+  
+  .carousel-item img {
+    object-fit: cover; /* Pour conserver le ratio des images */
+  }
+  
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+  .card:hover {
+    box-shadow: 0 4px 8px 0 rgba(25, 227, 59, 0.2);
+    transition: 0.3s;
+  }
+  img{
+    border-radius: 18px;
+  }
+  header{
+    background-color: aqua;
+  }
